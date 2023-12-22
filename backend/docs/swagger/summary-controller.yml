@@ -1,0 +1,30 @@
+tags:
+  - name: Summary
+    description: Endpoints to manipulate rural producers
+paths:
+  /rural-producers/summary:
+    get:
+      tags:
+        - Summary
+      summary: Returns a summary of rural producer records
+      responses:
+        200:
+          description: Summary of rural producer records
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SummaryResponse'
+
+components:
+  schemas:
+    SummaryResponse:
+      type: object
+      properties:
+        totalFarmsQuantity:
+          type: number
+          format: double
+          example: 1000
+        totalFarmsAreaInHectares:
+          type: number
+          format: double
+          example: 1000

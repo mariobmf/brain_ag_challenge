@@ -1,0 +1,214 @@
+tags:
+  - name: Rural Producer
+    description: Endpoints to manipulate rural producers
+paths:
+  /rural-producers:
+    get:
+      tags:
+        - Rural Producer
+      summary: List all rural producers
+      responses:
+        200:
+          description: List all rural producers
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RuralProducerResponse'
+    post:
+      tags:
+        - Rural Producer
+      summary: Creates a new rural producer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateRuralProducer'
+      responses:
+        201:
+          description: Successfully created rural producer
+        400:
+          description: Invalid request body
+        409:
+          description: Rural producer already exists
+  /rural-producers/{id}:
+    get:
+      tags:
+        - Rural Producer
+      summary: Returns a specific rural producer.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Rural producer Id
+          schema:
+            type: string
+            format: uuid
+      responses:
+        200:
+          description: Rural producer information
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RuralProducerResponse'
+        404:
+          description: Rural producer not found
+    put:
+      tags:
+        - Rural Producer
+      summary: Updates a rural producer
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Rural producer Id
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateRuralProducer'
+      responses:
+        200:
+          description: Rural producer successfully updated
+        404:
+          description: Rural producer not found
+    delete:
+      tags:
+        - Rural Producer
+      summary: Deletes a rural producer
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Rural producer Id
+          schema:
+            type: string
+            format: uuid
+      responses:
+        200:
+          description: Rural producer successfully deleted
+        404:
+          description: Rural producer not found
+
+components:
+  schemas:
+    RuralProducerResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        document:
+          type: string
+          description: CPF or CNPJ
+          example: 22443813070
+        name:
+          type: string
+          example: John Doe
+        farmName:
+          type: string
+          example: John Doe Farm
+        city:
+          type: string
+          example: São Paulo
+        state:
+          type: string
+          example: SP
+        totalAreaInHectaresOfTheFarm:
+          type: number
+          format: double
+          example: 1000
+        cultivableAreaInHectares:
+          type: number
+          format: double
+          example: 500
+        vegetationAreaInHectares:
+          type: number
+          format: double
+          example: 500
+        plantedCrops:
+          type: array
+          items:
+            type: string
+            enum: [soy, corn, cotton, coffee, sugarcane]
+          example: [soy`, corn, cotton, coffee, sugarcane]
+    CreateRuralProducer:
+      type: object
+      properties:
+        document:
+          type: string
+          description: CPF or CNPJ
+          example: 22443813070
+        name:
+          type: string
+          example: John Doe
+        farmName:
+          type: string
+          example: John Doe Farm
+        city:
+          type: string
+          example: São Paulo
+        state:
+          type: string
+          example: SP
+        totalAreaInHectaresOfTheFarm:
+          type: number
+          format: double
+          example: 1000
+        cultivableAreaInHectares:
+          type: number
+          format: double
+          example: 500
+        vegetationAreaInHectares:
+          type: number
+          format: double
+          example: 500
+        plantedCrops:
+          type: array
+          items:
+            type: string
+            enum: [soy, corn, cotton, coffee, sugarcane]
+          example: [soy, corn, cotton, coffee, sugarcane]
+    UpdateRuralProducer:
+      type: object
+      properties:
+        document:
+          type: string
+          description: CPF or CNPJ
+          example: 22443813070
+        name:
+          type: string
+          example: John Doe
+        farmName:
+          type: string
+          example: John Doe Farm
+        city:
+          type: string
+          example: São Paulo
+        state:
+          type: string
+          example: SP
+        totalAreaInHectaresOfTheFarm:
+          type: number
+          format: double
+          example: 1000
+        cultivableAreaInHectares:
+          type: number
+          format: double
+          example: 500
+        vegetationAreaInHectares:
+          type: number
+          format: double
+          example: 500
+        plantedCrops:
+          type: array
+          items:
+            type: string
+            enum: [soy, corn, cotton, coffee, sugarcane]
+          example: [soy, corn, cotton, coffee, sugarcane]
