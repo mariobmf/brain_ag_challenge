@@ -2,6 +2,7 @@ import { test } from '@japa/runner'
 import { DeleteRuralProducerUseCase } from './delete-rural-producer.use-case'
 import { InMemoryRuralProducersRepository } from 'Tests/repositories/in-memory-rural-producers.repository'
 import { makeRuralProducer } from 'Tests/factories/make-rural-producer.factory'
+import { DeleteRuralProducerErrors } from '../delete-rural-producer'
 
 let inMemoryRuralProducersRepository: InMemoryRuralProducersRepository
 let sut: DeleteRuralProducerUseCase
@@ -22,10 +23,10 @@ test.group('DeleteRuralProducerUseCase', (group) => {
   })
 
   test('Should NOT delete an rural producer with invalid ID', async ({ expect }) => {
-    expect(() =>
-      sut.execute({
-        id: 'invalid-id',
-      })
-    ).rejects.toBeInstanceOf(Error)
+    const response = await sut.execute({
+      id: 'invalid-id',
+    })
+    expect(response.isFailure()).toBeTruthy()
+    expect(response.value).toBeInstanceOf(DeleteRuralProducerErrors.RuralProducerNotFound)
   })
 })

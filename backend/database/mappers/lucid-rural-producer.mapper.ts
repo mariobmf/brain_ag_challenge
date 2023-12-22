@@ -33,7 +33,7 @@ export class LucidRuralProducerMapper {
         totalAreaInHectaresOfTheFarm: raw.total_area_in_hectares_of_the_farm,
         cultivableAreaInHectares: raw.cultivable_area_in_hectares,
         vegetationAreaInHectares: raw.vegetation_area_in_hectares,
-        plantedCrops: raw.planted_crops as PlantedCrops,
+        plantedCrops: raw.planted_crops as PlantedCrops[],
       },
       new UniqueEntityId(raw.id)
     )

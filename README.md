@@ -14,15 +14,17 @@
     - OK: Criar repositories
     - OK: Criar mappers
   - HTTP
-    - Criar Controllers
-      - Rural Producer
-      - Resume
-    - Injeção de dependência
-    - Validar Body
-      - CPF e CNPJ
+    - OK Criar Controllers
+      - OK Rural Producer
+      - OK Resume
+    - OK Injeção de dependência
+    - OK Validar Body
+    - OK: Error handling
+  - Documentation
   - Docker
     - Configurar dockerfile
     - Configurar docker compose
+  - Test E2E
 - Test Coverage
   
   

@@ -3,7 +3,7 @@ import { Document } from './document'
 
 test.group('DocumentValueObject', () => {
   test('Should create an Document with CPF type', async ({ expect }) => {
-    const cpfMock = '11409036677'
+    const cpfMock = '71779879083'
     const document = Document.create(cpfMock)
     expect(document.value).toEqual(cpfMock)
   })

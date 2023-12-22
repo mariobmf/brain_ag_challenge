@@ -30,7 +30,7 @@ export default class RuralProducer extends BaseModel {
   public vegetation_area_in_hectares: number
 
   @column()
-  public planted_crops: string
+  public planted_crops: string[]
 
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime

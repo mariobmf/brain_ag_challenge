@@ -13,7 +13,7 @@ export interface RuralProducerProps {
   totalAreaInHectaresOfTheFarm: number
   cultivableAreaInHectares: number
   vegetationAreaInHectares: number
-  plantedCrops: PlantedCrops
+  plantedCrops: PlantedCrops[]
 }
 
 export class RuralProducer extends Entity<RuralProducerProps> {
@@ -83,7 +83,7 @@ export class RuralProducer extends Entity<RuralProducerProps> {
   public get plantedCrops() {
     return this.props.plantedCrops
   }
-  public set plantedCrops(plantedCrops: PlantedCrops) {
+  public set plantedCrops(plantedCrops: PlantedCrops[]) {
     this.props.plantedCrops = plantedCrops
   }
 }

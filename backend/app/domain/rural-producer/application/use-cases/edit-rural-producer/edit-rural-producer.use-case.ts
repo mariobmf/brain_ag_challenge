@@ -1,5 +1,7 @@
 import { PlantedCrops } from 'App/domain/rural-producer/enterprise/entities/rural-producer'
 import { RuralProducersRepository } from '../../repositories/rural-producers-repository'
+import { Either, failure, success } from 'App/core/either'
+import { EditRuralProducerErrors } from '../edit-rural-producer'
 
 interface EditRuralProducerUseCaseRequest {
   id: string
@@ -10,12 +12,14 @@ interface EditRuralProducerUseCaseRequest {
   totalAreaInHectaresOfTheFarm: number
   cultivableAreaInHectares: number
   vegetationAreaInHectares: number
-  plantedCrops: PlantedCrops
+  plantedCrops: PlantedCrops[]
 }
+
+type Response = Either<EditRuralProducerErrors.RuralProducerNotFound, null>
 
 export class EditRuralProducerUseCase {
   constructor(private ruralProducersRepository: RuralProducersRepository) {}
-  async execute(props: EditRuralProducerUseCaseRequest) {
+  async execute(props: EditRuralProducerUseCaseRequest): Promise<Response> {
     const {
       id,
       city,
@@ -28,9 +32,7 @@ export class EditRuralProducerUseCase {
       vegetationAreaInHectares,
     } = props
     const ruralProducer = await this.ruralProducersRepository.findById(id)
-    if (!ruralProducer) {
-      throw new Error('Rural Producer not found')
-    }
+    if (!ruralProducer) return failure(new EditRuralProducerErrors.RuralProducerNotFound())
     ruralProducer.city = city
     ruralProducer.cultivableAreaInHectares = cultivableAreaInHectares
     ruralProducer.farmName = farmName
@@ -40,5 +42,6 @@ export class EditRuralProducerUseCase {
     ruralProducer.totalAreaInHectaresOfTheFarm = totalAreaInHectaresOfTheFarm
     ruralProducer.vegetationAreaInHectares = vegetationAreaInHectares
     await this.ruralProducersRepository.save(ruralProducer)
+    return success(null)
   }
 }

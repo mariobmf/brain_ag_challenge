@@ -14,7 +14,7 @@ export default class extends BaseSchema {
       table.float('total_area_in_hectares_of_the_farm').notNullable()
       table.float('cultivable_area_in_hectares').notNullable()
       table.float('vegetation_area_in_hectares').notNullable()
-      table.string('planted_crops').notNullable()
+      table.specificType('planted_crops', 'text[]').notNullable()
 
       /**
        * Uses timestamptz for PostgreSQL and DATETIME2 for MSSQL

@@ -25,6 +25,11 @@ export class LucidRuralProducersRepository implements RuralProducersRepository {
     return rawRuralProducer ? LucidRuralProducerMapper.toDomain(rawRuralProducer) : null
   }
 
+  async findByDocument(document: string): Promise<RuralProducer | null> {
+    const rawRuralProducer = await RuralProducerModel.findBy('document', document)
+    return rawRuralProducer ? LucidRuralProducerMapper.toDomain(rawRuralProducer) : null
+  }
+
   async findAll(): Promise<RuralProducer[]> {
     const rawRuralProducers = await RuralProducerModel.all()
     return rawRuralProducers.map(LucidRuralProducerMapper.toDomain)

@@ -23,6 +23,11 @@ export class InMemoryRuralProducersRepository implements RuralProducersRepositor
     return ruralProducer ?? null
   }
 
+  async findByDocument(document: string): Promise<RuralProducer | null> {
+    const ruralProducer = this.items.find((item) => item.document.value === document)
+    return ruralProducer ?? null
+  }
+
   async findAll(): Promise<RuralProducer[]> {
     return this.items
   }
