@@ -1,3 +1,6 @@
+import { validateCnpj } from 'App/utils/cnpj-validator'
+import { validateCpf } from 'App/utils/cpf-validator'
+
 export class Document {
   private _value: string
 
@@ -5,8 +8,9 @@ export class Document {
     this._value = value
   }
 
-  static create(document: string) {
-    return new Document(document)
+  static create(value: string) {
+    if (!validateCpf(value) && !validateCnpj(value)) throw new Error('Invalid Document')
+    return new Document(value)
   }
 
   public get value() {

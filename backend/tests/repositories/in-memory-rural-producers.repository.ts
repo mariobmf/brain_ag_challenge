@@ -22,4 +22,8 @@ export class InMemoryRuralProducersRepository implements RuralProducersRepositor
     const ruralProducer = this.items.find((item) => item.id.toString() === id)
     return ruralProducer ?? null
   }
+
+  async findAll(): Promise<RuralProducer[]> {
+    return this.items
+  }
 }

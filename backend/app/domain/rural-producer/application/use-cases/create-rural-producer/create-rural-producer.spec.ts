@@ -13,7 +13,7 @@ test.group('CreateRuralProducerUseCase', (group) => {
 
   test('Should create an rural producer', async ({ expect }) => {
     await sut.execute({
-      document: '12345678910',
+      document: '71779879083',
       name: 'Name',
       farmName: 'Farm Name',
       city: 'City',

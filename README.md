@@ -1,16 +1,28 @@
 - Entities
-  - Teste do Document
-    - Validação do documento
-  - Teste do Rural Producer
+  - OK Teste do Document
+    - OK Validação do documento
+  - OK Teste do Rural Producer
 - UseCases
-  - Update
-  - Delete
-  - Resume
+  - OK Update
+  - OK Delete
+  - OK Resume
 - Infra
-  - Criar Controllers
-    - Rural Producer
-    - Resume
-  - Injeção de dependência
-  - Validar Body
-    - CPF e CNPJ
+  - DB
+    - Configurar DB
+    - Criar Models
+    - Criar migrations
+    - Criar repositories
+  - HTTP
+    - Criar Controllers
+      - Rural Producer
+      - Resume
+    - Injeção de dependência
+    - Validar Body
+      - CPF e CNPJ
+  - Docker
+    - Configurar dockerfile
+    - Configurar docker compose
+- Test Coverage
+  
+  
   

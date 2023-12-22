@@ -11,7 +11,8 @@
     "Config": "config",
     "Database": "database",
     "Contracts": "contracts",
-    "Tests": "tests"
+    "Tests": "tests",
+    "Utils": "utils"
   },
   "preloads": ["./start/routes", "./start/kernel"],
   "providers": ["./providers/AppProvider", "@adonisjs/core"],
@@ -20,7 +21,7 @@
     "suites": [
       {
         "name": "unit",
-        "files": ["app/domain/**/*.spec(.ts|.js)"]
+        "files": ["app/domain/**/*.spec(.ts|.js)", "app/utils/*.spec(.ts|.js)"]
       },
       {
         "name": "functional",

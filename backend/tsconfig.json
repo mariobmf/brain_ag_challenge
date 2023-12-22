@@ -11,7 +11,8 @@
       "Config/*": ["./config/*"],
       "Contracts/*": ["./contracts/*"],
       "Database/*": ["./database/*"],
-      "Tests/*": ["./tests/*"]
+      "Tests/*": ["./tests/*"],
+      "Utils/*": ["app/utils/*"]
     },
     "types": ["@adonisjs/core", "@adonisjs/repl", "@japa/preset-adonis/build/adonis-typings"]
   }
