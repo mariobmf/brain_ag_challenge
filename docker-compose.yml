@@ -1,0 +1,81 @@
+version: "3"
+services:
+  postgres_db:
+    image: "bitnami/postgresql:latest"
+    container_name: postgres_db
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRESQL_USERNAME=root
+      - POSTGRESQL_PASSWORD=root
+      - POSTGRESQL_DATABASE=brain_agriculture_db
+    volumes:
+      - dbdata:/bitnami/postgresql
+    networks:
+      - app-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  migrations:
+    container_name: migrations
+    build:
+      context: ./backend/
+      target: dependencies
+    command: dumb-init node ace migration:run
+    environment:
+      - PORT=3333
+      - HOST=0.0.0.0
+      - NODE_ENV=development
+      - DRIVE_DISK=local
+      - APP_KEY=asdjhKJhk678234khjadHJKHKdshdjk
+      - DB_CONNECTION=pg
+      - PG_HOST=postgres_db
+      - PG_PORT=5432
+      - PG_USER=root
+      - PG_PASSWORD=root
+      - PG_DB_NAME=brain_agriculture_db
+    networks:
+      - app-network
+    depends_on:
+      postgres_db:
+        condition: service_healthy
+
+  backend:
+    container_name: backend
+    build:
+      context: ./backend/
+      target: dependencies
+    command: dumb-init node ace serve --watch --node-args="--inspect=0.0.0.0"
+    volumes:
+      - ./backend:/home/node/app
+      - nodemodulesbackend:/home/node/app/node_modules
+    ports:
+      - "3333:3333"
+      - 9229:9229
+    environment:
+      - PORT=3333
+      - HOST=0.0.0.0
+      - NODE_ENV=development
+      - DRIVE_DISK=local
+      - APP_KEY=asdjhKJhk678234khjadHJKHKdshdjk
+      - DB_CONNECTION=pg
+      - PG_HOST=postgres_db
+      - PG_PORT=5432
+      - PG_USER=root
+      - PG_PASSWORD=root
+      - PG_DB_NAME=brain_agriculture_db
+    networks:
+      - app-network
+    depends_on:
+      - postgres_db
+      - migrations
+
+networks:
+  app-network:
+
+volumes:
+  dbdata:
+  nodemodulesbackend:
