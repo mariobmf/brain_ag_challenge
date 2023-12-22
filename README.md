@@ -8,10 +8,11 @@
   - OK Resume
 - Infra
   - DB
-    - Configurar DB
-    - Criar Models
-    - Criar migrations
-    - Criar repositories
+    - OK: Configurar DB
+    - OK: Criar migrations
+    - OK: Criar Models
+    - OK: Criar repositories
+    - OK: Criar mappers
   - HTTP
     - Criar Controllers
       - Rural Producer

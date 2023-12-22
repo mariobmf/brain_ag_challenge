@@ -1,0 +1,21 @@
+version: '3'
+services:
+  postgres_db:
+    image: 'bitnami/postgresql:latest'
+    container_name: postgres_db
+    ports:
+      - '5432:5432'
+    environment:
+      - POSTGRESQL_USERNAME=root
+      - POSTGRESQL_PASSWORD=root
+      - POSTGRESQL_DATABASE=brain_agriculture_db
+    volumes:
+      - dbdata:/bitnami/postgresql
+    networks:
+      - backend-network
+
+networks:
+  backend-network:
+
+volumes:
+  dbdata:
