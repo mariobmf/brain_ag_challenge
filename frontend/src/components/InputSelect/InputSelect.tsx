@@ -18,7 +18,7 @@ interface InputSelectProps extends Props {
 }
 
 const controlStyles = {
-  base: 'rounded-xl bg-slate-300 px-3 border-zinc-700 border-[1px] h-[40px]',
+  base: 'rounded-xl bg-slate-300 px-3 border-zinc-700 border-[1px] min-h-[40px]',
   error: 'border-red-500 border-2',
 };
 const menuStyles = 'border border-zinc-300 bg-slate-300 rounded-xl';

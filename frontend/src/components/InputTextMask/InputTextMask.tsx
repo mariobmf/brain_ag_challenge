@@ -68,7 +68,7 @@ const InputTextMask = React.forwardRef<HTMLInputElement, InputTextMaskProps>(
           ref={ref}
           data-state={error ? 'error' : ''}
           className={classNames(
-            'h-[40px] w-full rounded-xl border-[1px] border-zinc-700 bg-slate-300 px-3 text-base font-medium text-zinc-700 placeholder-zinc-400 outline-none data-[state=error]:border-2 data-[state=error]:border-red-500',
+            'h-[40px] w-full rounded-xl border-[1px] border-zinc-700 bg-slate-300 px-3 text-base font-medium text-zinc-700 placeholder-zinc-400 outline-none disabled:opacity-50 data-[state=error]:border-2 data-[state=error]:border-red-500',
             className,
           )}
           placeholder={label || rest.placeholder}

@@ -3,13 +3,8 @@
 @tailwind utilities;
 
 @layer base {
-  html,
   body {
-    @apply relative box-border h-full w-full antialiased;
-  }
-
-  body {
-    @apply bg-white text-gray-700;
+    @apply bg-white text-zinc-700 antialiased;
   }
 
   h1 {

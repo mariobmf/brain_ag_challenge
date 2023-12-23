@@ -1,19 +1,17 @@
 - Montar Layout
 - Páginas
   - Cadastro
-    - OK: continuar estilização
-    - OK: multi select
-    - Integração API
-      - React Hook
-      - Hook
-      - API
     - Validações:
       - validar CPF e CNPJ
-      - A soma de área agrícultável e vegetação, não deverá ser maior que a área total da fazenda
-  - Listagem
+      - A soma de área agricultável e vegetação, não deverá ser maior que a área total da fazenda
   - Resumo
 - Testes
+  - Factories
+  - Mocks
+  - Components
 - Responsividade
+- Docker
+  - Corrigir erro adonis-swagger
 
 Azul Escuro: #000080
 Marrom Terra: #8B4513

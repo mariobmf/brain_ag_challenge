@@ -79,10 +79,6 @@ export function RuralProducerForm({
       ({} as RuralProducerFormData),
   });
 
-  // useEffect(() => {
-  //   console.log(errors);
-  // }, [errors]);
-
   const handleFormSubmit: SubmitHandler<
     RuralProducerFormData
   > = async ruralProducerFormData => {
@@ -102,6 +98,7 @@ export function RuralProducerForm({
           {...register('document')}
           error={errors.document}
           aria-label="Documento"
+          disabled={type === 'update'}
         />
         <InputText
           label="Nome do produtor"
