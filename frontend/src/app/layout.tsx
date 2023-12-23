@@ -1,14 +1,29 @@
-import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import 'react-toastify/dist/ReactToastify.css';
 import './globals.css';
+import type { Metadata } from 'next';
 import { roboto } from './fonts';
-
-const inter = Inter({ subsets: ['latin'] });
+import { TopMenu } from '@/components/TopMenu';
+import { ToastContainer } from 'react-toastify';
 
 export const metadata: Metadata = {
-  title: 'Front-end Challenge',
-  description: 'Front-end Challenge',
+  title: 'Brain Agriculture',
+  description: 'Brain Agriculture',
 };
+
+const MENU_ITEMS = [
+  {
+    label: 'Resumo',
+    href: '/summary',
+  },
+  {
+    label: 'Cadastro',
+    href: '/register',
+  },
+  {
+    label: 'Produtores Rurais',
+    href: '/producers',
+  },
+];
 
 export default function RootLayout({
   children,
@@ -17,7 +32,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-BR" className={roboto.className}>
-      <body className={inter.className}>{children}</body>
+      <body className="relative flex h-full w-full flex-col bg-gradient-to-t from-slate-300 to-slate-100">
+        <ToastContainer />
+        <TopMenu items={MENU_ITEMS} />
+        {children}
+      </body>
     </html>
   );
 }
