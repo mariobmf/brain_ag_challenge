@@ -17,8 +17,8 @@ import {
   GetRuralProducerUseCase,
 } from 'App/domain/rural-producer/application/use-cases/get-rural-producer'
 import { ListRuralProducersUseCase } from 'App/domain/rural-producer/application/use-cases/list-rural-producers'
-import { PlantedCrops } from 'App/domain/rural-producer/enterprise/entities/rural-producer'
-import { RuralProducerViewModel } from 'App/infra/http/view-models/rural-producer.view-model'
+import { PlantedCropType } from 'App/domain/rural-producer/enterprise/entities/rural-producer'
+import { RuralProducerViewModel } from 'App/http/view-models/rural-producer.view-model'
 import { LucidRuralProducersRepository } from 'Database/repositories/lucid-rural-producers.repository'
 
 export default class RuralProducersController {
@@ -75,7 +75,7 @@ export default class RuralProducersController {
         totalAreaInHectaresOfTheFarm,
         cultivableAreaInHectares,
         vegetationAreaInHectares,
-        plantedCrops: plantedCrops as PlantedCrops[],
+        plantedCrops: plantedCrops as PlantedCropType[],
       })
       if (useCaseResponse.isFailure()) {
         const error = useCaseResponse.value
@@ -155,7 +155,7 @@ export default class RuralProducersController {
         totalAreaInHectaresOfTheFarm,
         cultivableAreaInHectares,
         vegetationAreaInHectares,
-        plantedCrops: plantedCrops as PlantedCrops[],
+        plantedCrops: plantedCrops as PlantedCropType[],
       })
       if (useCaseResponse.isFailure()) {
         const error = useCaseResponse.value

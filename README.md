@@ -52,10 +52,6 @@ para rodar testes de unidade:
 ```bash
 npm run test:unit
 ```
-para rodar testes e2e:
-```bash
-npm run test:e2e
-```
 
 ## Como acessar a documentação dos endpoints
 1. Inicie a aplicação

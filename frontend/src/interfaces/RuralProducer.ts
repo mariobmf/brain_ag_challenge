@@ -1,4 +1,4 @@
-export type PlantedCropsType =
+export type PlantedCropType =
   | 'soy'
   | 'corn'
   | 'cotton'
@@ -23,5 +23,5 @@ export interface RuralProducer {
   totalAreaInHectaresOfTheFarm: number;
   cultivableAreaInHectares: number;
   vegetationAreaInHectares: number;
-  plantedCrops: PlantedCropsType[];
+  plantedCrops: PlantedCropType[];
 }

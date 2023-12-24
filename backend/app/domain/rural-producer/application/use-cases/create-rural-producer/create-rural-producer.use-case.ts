@@ -1,5 +1,5 @@
 import {
-  PlantedCrops,
+  PlantedCropType,
   RuralProducer,
 } from 'App/domain/rural-producer/enterprise/entities/rural-producer'
 import { RuralProducersRepository } from '../../repositories/rural-producers-repository'
@@ -16,7 +16,7 @@ interface CreateRuralProducerUseCaseRequest {
   totalAreaInHectaresOfTheFarm: number
   cultivableAreaInHectares: number
   vegetationAreaInHectares: number
-  plantedCrops: PlantedCrops[]
+  plantedCrops: PlantedCropType[]
 }
 
 type Response = Either<CreateRuralProducerErrors.RuralProducerAlreadyExists, null>

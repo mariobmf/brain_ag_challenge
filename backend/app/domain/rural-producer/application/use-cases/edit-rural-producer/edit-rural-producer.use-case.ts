@@ -1,4 +1,4 @@
-import { PlantedCrops } from 'App/domain/rural-producer/enterprise/entities/rural-producer'
+import { PlantedCropType } from 'App/domain/rural-producer/enterprise/entities/rural-producer'
 import { RuralProducersRepository } from '../../repositories/rural-producers-repository'
 import { Either, failure, success } from 'App/core/either'
 import { EditRuralProducerErrors } from '../edit-rural-producer'
@@ -12,7 +12,7 @@ interface EditRuralProducerUseCaseRequest {
   totalAreaInHectaresOfTheFarm: number
   cultivableAreaInHectares: number
   vegetationAreaInHectares: number
-  plantedCrops: PlantedCrops[]
+  plantedCrops: PlantedCropType[]
 }
 
 type Response = Either<EditRuralProducerErrors.RuralProducerNotFound, null>

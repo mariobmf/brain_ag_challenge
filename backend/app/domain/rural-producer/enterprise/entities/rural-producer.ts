@@ -2,7 +2,7 @@ import { Entity } from 'App/core/entities/entity'
 import { Document } from './value-objects/document'
 import { UniqueEntityId } from 'App/core/entities/unique-entity-id'
 
-export type PlantedCrops = 'soy' | 'corn' | 'cotton' | 'coffee' | 'sugarcane'
+export type PlantedCropType = 'soy' | 'corn' | 'cotton' | 'coffee' | 'sugarcane'
 
 export interface RuralProducerProps {
   document: Document
@@ -13,7 +13,7 @@ export interface RuralProducerProps {
   totalAreaInHectaresOfTheFarm: number
   cultivableAreaInHectares: number
   vegetationAreaInHectares: number
-  plantedCrops: PlantedCrops[]
+  plantedCrops: PlantedCropType[]
 }
 
 export class RuralProducer extends Entity<RuralProducerProps> {
@@ -83,7 +83,7 @@ export class RuralProducer extends Entity<RuralProducerProps> {
   public get plantedCrops() {
     return this.props.plantedCrops
   }
-  public set plantedCrops(plantedCrops: PlantedCrops[]) {
+  public set plantedCrops(plantedCrops: PlantedCropType[]) {
     this.props.plantedCrops = plantedCrops
   }
 }

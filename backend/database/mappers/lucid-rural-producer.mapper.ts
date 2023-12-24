@@ -1,7 +1,7 @@
 import RawRuralProducer from 'App/Models/RuralProducer'
 import { UniqueEntityId } from 'App/core/entities/unique-entity-id'
 import {
-  PlantedCrops,
+  PlantedCropType,
   RuralProducer,
 } from 'App/domain/rural-producer/enterprise/entities/rural-producer'
 import { Document } from 'App/domain/rural-producer/enterprise/entities/value-objects/document'
@@ -33,7 +33,7 @@ export class LucidRuralProducerMapper {
         totalAreaInHectaresOfTheFarm: raw.total_area_in_hectares_of_the_farm,
         cultivableAreaInHectares: raw.cultivable_area_in_hectares,
         vegetationAreaInHectares: raw.vegetation_area_in_hectares,
-        plantedCrops: raw.planted_crops as PlantedCrops[],
+        plantedCrops: raw.planted_crops as PlantedCropType[],
       },
       new UniqueEntityId(raw.id)
     )
