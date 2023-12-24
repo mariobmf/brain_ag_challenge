@@ -8,12 +8,18 @@ import { Button } from '@/components/Button';
 import { cpfCnpjMask } from '@/utils/maskFormatter';
 import { InputSelect } from '../InputSelect';
 import { STATES_LIST } from '@/utils/states';
+import { validateCpf } from '@/utils/cpfValidator';
+import { validateCnpj } from '@/utils/cnpjValidator';
 
 const schema = z.object({
   document: z
     .string()
-    .min(14, 'Documento invalido')
-    .max(18, 'Documento invalido'),
+    .min(14, 'Documento obrigatório')
+    .refine(value => value.length > 14 || validateCpf(value), 'CPF invalido')
+    .refine(
+      value => value.length <= 14 || validateCnpj(value),
+      'CNPJ invalido',
+    ),
   name: z.string().min(1, 'Campo obrigatório'),
   farmName: z.string().min(1, 'Campo obrigatório'),
   city: z.string().min(1, 'Campo obrigatório'),
@@ -26,7 +32,9 @@ const schema = z.object({
   cultivableAreaInHectares: z.number().min(1, 'Campo obrigatório'),
   vegetationAreaInHectares: z.number().min(1, 'Campo obrigatório'),
   plantedCrops: z
-    .array(z.enum(['soy', 'corn', 'cotton', 'coffee', 'sugarcane']))
+    .array(z.enum(['soy', 'corn', 'cotton', 'coffee', 'sugarcane']), {
+      required_error: 'Campo obrigatório',
+    })
     .min(1, 'Campo obrigatório'),
 });
 
@@ -70,6 +78,7 @@ export function RuralProducerForm({
     handleSubmit,
     register,
     control,
+    setError,
     formState: { errors, isDirty, isValid },
   } = useForm<RuralProducerFormData>({
     resolver: zodResolver(schema),
@@ -82,6 +91,21 @@ export function RuralProducerForm({
   const handleFormSubmit: SubmitHandler<
     RuralProducerFormData
   > = async ruralProducerFormData => {
+    const sumOfAreas =
+      ruralProducerFormData.vegetationAreaInHectares +
+      ruralProducerFormData.cultivableAreaInHectares;
+    if (sumOfAreas > ruralProducerFormData.totalAreaInHectaresOfTheFarm) {
+      setError('totalAreaInHectaresOfTheFarm', {
+        message: 'Soma das áreas maior que a área total da fazenda',
+      });
+      setError('cultivableAreaInHectares', {
+        message: 'Soma das áreas maior que a área total da fazenda',
+      });
+      setError('vegetationAreaInHectares', {
+        message: 'Soma das áreas maior que a área total da fazenda',
+      });
+      return;
+    }
     onSubmit(ruralProducerFormData);
   };
 

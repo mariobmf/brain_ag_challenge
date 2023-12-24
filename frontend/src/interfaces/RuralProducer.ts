@@ -5,7 +5,7 @@ export type PlantedCropsType =
   | 'coffee'
   | 'sugarcane';
 
-export const PlantedCrops = {
+export const PlantedCropsEnum = {
   soy: 'Soja',
   corn: 'Milho',
   cotton: 'Algodão',

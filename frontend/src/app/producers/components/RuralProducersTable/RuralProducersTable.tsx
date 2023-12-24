@@ -1,6 +1,6 @@
 'use client';
 import { Spinner } from '@/components/Spinner';
-import { PlantedCrops, RuralProducer } from '@/interfaces/RuralProducer';
+import { PlantedCropsEnum, RuralProducer } from '@/interfaces/RuralProducer';
 import { Pencil, Trash2 } from 'lucide-react';
 
 interface RuralProducerTableProps {
@@ -58,7 +58,7 @@ export function RuralProducersTable({
                       key={crop}
                       className="rounded-md bg-primary p-1 text-white"
                     >
-                      {PlantedCrops[crop]}
+                      {PlantedCropsEnum[crop]}
                     </span>
                   ))}
                 </div>

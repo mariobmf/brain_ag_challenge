@@ -7,7 +7,7 @@ import { useCreateRuralProducer } from '@/hooks/useCreateRuralProducer';
 import { useRouter } from 'next/navigation';
 import { toast } from 'react-toastify';
 
-export default function Producers() {
+export default function Register() {
   const router = useRouter();
   const {
     mutateAsync: handleCreateRuralProducer,
