@@ -16,12 +16,12 @@ docker compose up
 
 
 ## Como rodar os testes
-para rodar testes do backend:
+Para rodar testes do backend:
 ```bash
 cd backend
 npm run test:unit
 ```
-para rodar testes do frontend:
+Para rodar testes do frontend:
 ```bash
 cd frontend
 npm run test
