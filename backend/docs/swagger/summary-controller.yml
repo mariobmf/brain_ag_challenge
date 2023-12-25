@@ -28,3 +28,37 @@ components:
           type: number
           format: double
           example: 1000
+        totalProducersByStateQuantity:
+          type: array
+          items:
+            $ref: '#/components/schemas/TotalByType'
+          example:
+            - name: 'PR'
+              value: 1000
+            - name: 'SC'
+              value: 1000
+        totalByPlantedCropQuantity:
+          type: array
+          items:
+            $ref: '#/components/schemas/TotalByType'
+          example:
+            - name: 'soy'
+              value: 1000
+            - name: 'corn'
+              value: 1000
+        totalByAreaTypeInHectares:
+          type: array
+          items:
+            $ref: '#/components/schemas/TotalByType'
+          example:
+            - name: 'Agricultável'
+              value: 1000
+            - name: 'Vegetação'
+              value: 1000
+    TotalByType:
+      type: object
+      properties:
+        name:
+          type: string
+        value:
+          type: number
