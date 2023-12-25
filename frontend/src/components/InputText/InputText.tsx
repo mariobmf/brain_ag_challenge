@@ -7,16 +7,11 @@ interface InputTextProps extends InputHTMLAttributes<HTMLInputElement> {
   label?: string;
   register?: UseFormRegister<FieldValues>;
   error?: ErrorOption;
-  filled?: boolean;
 }
 
 const InputText = React.forwardRef<HTMLInputElement, InputTextProps>(
-  ({ label, error, filled, className, ...rest }, ref) => {
+  ({ label, error, className, ...rest }, ref) => {
     const [isFocused, setIsFocused] = useState(false);
-
-    const filledOrFocused = useMemo(() => {
-      return filled || isFocused;
-    }, [filled, isFocused]);
 
     return (
       <div className="flex w-full flex-col items-start">

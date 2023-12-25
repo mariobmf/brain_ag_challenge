@@ -3,7 +3,6 @@ import React, {
   ChangeEvent,
   InputHTMLAttributes,
   useCallback,
-  useMemo,
   useState,
 } from 'react';
 import { UseFormRegister, FieldValues, ErrorOption } from 'react-hook-form';
@@ -17,7 +16,6 @@ interface InputTextMaskProps extends InputHTMLAttributes<HTMLInputElement> {
   label?: string;
   register?: UseFormRegister<FieldValues>;
   error?: ErrorOption;
-  filled?: boolean;
 }
 
 const MASKS = {
@@ -27,15 +25,8 @@ const MASKS = {
 };
 
 const InputTextMask = React.forwardRef<HTMLInputElement, InputTextMaskProps>(
-  (
-    { mask, prefix, label, filled, onChange, error, className, ...rest },
-    ref,
-  ) => {
+  ({ mask, prefix, label, onChange, error, className, ...rest }, ref) => {
     const [isFocused, setIsFocused] = useState(false);
-
-    const filledOrFocused = useMemo(() => {
-      return filled || isFocused;
-    }, [filled, isFocused]);
 
     const handleKeyUp = useCallback(
       (e: ChangeEvent<HTMLInputElement>) => {

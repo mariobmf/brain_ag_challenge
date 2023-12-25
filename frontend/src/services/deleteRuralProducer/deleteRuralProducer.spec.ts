@@ -13,6 +13,6 @@ describe('deleteRuralProducer', () => {
 
     await deleteRuralProducer(mockId);
 
-    expect(API.delete).toHaveBeenCalledWith(mockId);
+    expect(API.delete).toHaveBeenCalledWith(`rural-producers/${mockId}`);
   });
 });

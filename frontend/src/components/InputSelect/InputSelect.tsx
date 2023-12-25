@@ -54,10 +54,13 @@ const InputSelect = React.forwardRef<any, InputSelectProps>(
     useEffect(() => setIsMounted(true), []);
 
     return isMounted ? (
-      <div className="flex w-full flex-col items-start">
+      <div
+        className="flex w-full flex-col items-start"
+        data-testid="input-select"
+      >
         {label && (
           <span
-            data-testid="input-text-label"
+            data-testid="input-select-label"
             className="mb-2 font-bold text-zinc-700"
           >
             {label}

@@ -16,7 +16,9 @@ const ruralProducerData = {
 jest.mock('../axios', () => ({
   API: {
     get: jest.fn().mockImplementation(props => {
-      return props.id === '1' ? ruralProducerData : null;
+      return {
+        data: [ruralProducerData],
+      };
     }),
   },
 }));

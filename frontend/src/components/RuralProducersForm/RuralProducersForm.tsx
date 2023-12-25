@@ -112,6 +112,7 @@ export function RuralProducerForm({
   return (
     <div className="relative flex w-full flex-col items-center">
       <form
+        aria-label={'form'}
         id="RuralProducerForm"
         onSubmit={handleSubmit(handleFormSubmit)}
         className="container grid max-w-[900px] auto-rows-fr grid-cols-[repeat(auto-fit,minmax(300px,1fr))] justify-items-center gap-4 p-4"
@@ -128,13 +129,13 @@ export function RuralProducerForm({
           label="Nome do produtor"
           {...register('name')}
           error={errors.name}
-          aria-label="Nome do produtor"
+          aria-label="Nome"
         />
         <InputText
           label="Nome da fazenda"
           {...register('farmName')}
           error={errors.farmName}
-          aria-label="Nome da fazenda"
+          aria-label="Fazenda"
         />
         <InputText
           label="Cidade"
@@ -152,6 +153,7 @@ export function RuralProducerForm({
               options={STATES_OPTIONS}
               error={errors.state}
               placeholder="Selecione um estado"
+              aria-label="Estado"
             />
           )}
         />
@@ -162,7 +164,7 @@ export function RuralProducerForm({
             setValueAs: value => Number(value),
           })}
           error={errors.totalAreaInHectaresOfTheFarm}
-          aria-label="Área total da fazenda (em hectares)"
+          aria-label="Area da fazenda"
         />
         <InputText
           type="number"
@@ -171,7 +173,7 @@ export function RuralProducerForm({
             setValueAs: value => Number(value),
           })}
           error={errors.cultivableAreaInHectares}
-          aria-label="Área agricultável (em hectares)"
+          aria-label="Area agricultável"
         />
         <InputText
           type="number"
@@ -180,7 +182,7 @@ export function RuralProducerForm({
             setValueAs: value => Number(value),
           })}
           error={errors.vegetationAreaInHectares}
-          aria-label="Área de vegetação (em hectares)"
+          aria-label="Area de vegetação"
         />
         <Controller
           control={control}
@@ -192,6 +194,7 @@ export function RuralProducerForm({
               options={CROPS_OPTIONS}
               error={errors.plantedCrops}
               placeholder="Selecione"
+              aria-label="Culturas"
               isMulti
             />
           )}

@@ -16,17 +16,19 @@ const ruralProducerData = {
 jest.mock('../axios', () => ({
   API: {
     get: jest.fn().mockImplementation(props => {
-      return props.id === '1' ? ruralProducerData : null;
+      return {
+        data: ruralProducerData,
+      };
     }),
   },
 }));
 
 describe('getRuralProducer', () => {
   it('should send a rural producer get request via the api service', async () => {
-    const mockId = 'rural_producer_id';
+    const mockId = '1';
 
     await getRuralProducer(mockId);
 
-    expect(API.get).toHaveBeenCalledWith(mockId);
+    expect(API.get).toHaveBeenCalledWith(`rural-producers/${mockId}`);
   });
 });

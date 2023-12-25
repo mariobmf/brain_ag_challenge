@@ -24,6 +24,6 @@ describe('createRuralProducer', () => {
 
     await createRuralProducer(ruralProducer);
 
-    expect(API.post).toHaveBeenCalledWith(ruralProducer);
+    expect(API.post).toHaveBeenCalledWith('rural-producers', ruralProducer);
   });
 });
